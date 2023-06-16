@@ -23,7 +23,7 @@ class ConnectionModel {
 
     try {
       $this->conn = new PDO("pgsql:host=$host;dbname=$dbname", $username, $password);
-      echo "Successful connection.";
+      echo "Successful connection. <br>";
     } catch (PDOException $exp) {
       echo "Connection failed. " . $exp->getMessage();
     }
@@ -38,6 +38,16 @@ class ConnectionModel {
     }
     //else, we return the instance.
     return self::$instance->conn;
+  }
+
+
+  //method to get the users user from the DB.
+  public static function getUsers()
+  {
+    $query = "SELECT * FROM users;"; //Query to execute in the DB.
+    $stmt = self::$instance->conn->query($query);
+    $users = $stmt->fetchAll(PDO::FETCH_ASSOC); //get all the data from the query. 
+    return json_encode($users);
   }
 
 }

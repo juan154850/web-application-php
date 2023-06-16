@@ -11,11 +11,10 @@
   <?php
   include_once("../app/controllers/connectionController.php");
   // Create an instance of the controller
-  $controller = new ConnectionController("localhost", "dbphp", "root", " ");
+  $controller = new ConnectionController("localhost", "dbUsers", "root", " ");
+  $users = $controller->getUsers();
+  print_r($users);
   ?>
-
-
-
 
 </body>
 
