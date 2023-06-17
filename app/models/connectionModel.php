@@ -1,6 +1,6 @@
 <?php
 
-//To create the table, you can use the next code or import the file "dataBase" in your postgreSQL. 
+//To create the table, you can use the next code or import the file "dataBase" in your postgreSQL.
 // CREATE TABLE public.users
 // (
 //     id serial NOT NULL,
@@ -11,7 +11,7 @@
 //     PRIMARY KEY (id)
 // );
 
-//the next class follows the Singleton pattern. 
+//the next class follows the Singleton pattern.
 class ConnectionModel {
 
   //Create the private attributes.
@@ -23,7 +23,7 @@ class ConnectionModel {
 
     try {
       $this->conn = new PDO("pgsql:host=$host;dbname=$dbname", $username, $password);
-      echo "Successful connection. <br>";
+      // echo "Successful connection. <br>";
     } catch (PDOException $exp) {
       echo "Connection failed. " . $exp->getMessage();
     }
@@ -40,16 +40,12 @@ class ConnectionModel {
     return self::$instance->conn;
   }
 
+}
 
-  //method to get the users user from the DB.
-  public static function getUsers()
-  {
-    $query = "SELECT * FROM users;"; //Query to execute in the DB.
-    $stmt = self::$instance->conn->query($query);
-    $users = $stmt->fetchAll(PDO::FETCH_ASSOC); //get all the data from the query. 
-    return json_encode($users);
-  }
-
+//We validate if you want to enter the route through the URL and not through the login, if so we redirect generating a kind of "block".
+if ($_SERVER["REQUEST_METHOD"] == "GET") {
+  header("Location: ../views/");
+  exit();
 }
 
 ?>
