@@ -8,7 +8,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
   $password = $_POST["password"];
 
   // Validate user and password
-  if ($username == "1" && $password == "1") {
+  if ($username == "pruebas" && $password == "prueba123") {
     // Create an instance of the connection driver
     $ans = new userController("localhost", "dbUsers", "root", " ");
     // Obtain the response from the database
