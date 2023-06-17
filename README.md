@@ -69,3 +69,13 @@ Nota: Tambien pude importar el archivo 'dbusers' que está en el repositorio.
 | `200`      | Successful Response  (Datos de los usuarios)             |
 | `400`      | Not found                |
 
+### Conceptos y tecnologías utilizados: 
+
+- Clases (POO)
+- Principio Singleton
+- Patron MVC
+- Manejo de errores y excepciones.
+- PHP
+- CSS
+- PostgreSQL
+
